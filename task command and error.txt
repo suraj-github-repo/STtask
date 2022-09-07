@@ -1,0 +1,145 @@
+TASK 1:-
+----------
+creating a dockerfile for apache with base image of ubuntu
+--> vi Dockerfile  and 
+
+FROM ubuntu
+RUN apt update
+RUN apt install -y apache2
+RUN apt install -y vim
+COPY . /var/www/html/
+EXPOSE 80
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+
+--> docker build -t testapache . (for build a image)
+
+--> docker run -it --name my_apache_container -d -p 3000:80 image ID
+
+--> after successfully create container check on the webserve it's working OR Not.
+
+--> creating NGINX container by Dockerfile like 
+
+FROM ubuntu:18.04
+RUN apt-get update -y
+RUN apt-get install nginx -y
+RUN apt-get install vim
+COPY . /var/www/html/
+EXPOSE 80
+CMD ["nginx", "start"]
+
+
+--> docker build -t nginx .
+                                    
+--> docker run -it --name my_nginx_container -d -p 3001:80 nginx
+
+--> after successfully create container check on the webserve it's working OR Not.
+
+
+
+$after that push the all the changes to the github by using following commands
+
+git init 
+
+git add .
+
+git commit -m " file added"
+
+git push -u origin main
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+ERROR In task1
+--------------------
+
+1]facing issue in apache installation like apache package not found
+--> so in which i am doing some changes in dockerfile like changing a ubuntu version after that it work properly.
+
+2] facing issue in git like pushing a repository from local to remote
+--> because this issue face because i not run command of git commit , then  i run this git commit command 
+
+3] error in git push for git repo authentication
+--> in which need a to create personal access token and whenever you running a command git push that time use a personal accesss token in the password place. 
+
+4] unable to locate package apache2 OR unable to locate package -y
+--> so that kind of error found whenever we are copy the command and paste , so this issue solve by editing and need to understand what is issue and wher the issue.
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+TASK 2 :-
+-------
+
+--> git clone and repository URL
+create Dockerfile 
+--> vi Dockerfile paste the following data 
+
+# pull official base image
+FROM node:latest
+
+# set working directory
+WORKDIR /frontend
+
+# install app dependencies
+COPY ./*.json /frontend/
+RUN npm update --force
+RUN npm install
+#RUN npm audit fix --force
+RUN yarn add react-scripts
+# add app
+COPY . .
+EXPOSE 3003
+# start app
+CMD ["npm", "start"]
+
+
+
+--> sudo apt-get npm install
+
+--> docker build -t my-react-app . {give the any name to the image}
+
+
+--> apt install docker-compose
+
+--> docker-compose -v OR docker-compose version { to check version}
+
+--> Creating a docker-compose.yml file
+
+version: '3.6'
+services:
+  reactapp:
+     image: my-react-app
+     ports:
+       - "3003:3003"
+
+
+
+--> docker-compose up
+
+--> once the successfully create container check on the webserve it's working OR Not.
+
+$after that push the all the changes to the github by using following commands
+
+git init 
+
+git add .
+
+git commit -m " file added"
+
+git push -u origin main
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+ERROR in TASK 2
+
+1) docker file creating for react app
+--> solve this problem by using google and youtube  help.
+2) error show when image and container are ready but web page is not accessible ?
+--> 
+
+3) error like mapping values are not allowed ?
+--> that error found because of small mistake like giving space before and after colon. also systematic arrangement of docker-compose are not found.
+
+
+
+
+
+
+
+
+
